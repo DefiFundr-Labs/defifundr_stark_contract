@@ -45,3 +45,27 @@ fn test_cannot_increase_balance_with_zero_value() {
         }
     };
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use starknet::testing::{deploy_contract, ContractAddress};
+    use starknet::contract_address_const;
+
+    #[test]
+    fn test_validate_wallet() {
+        // Deploy the contract and create a dispatcher
+        let contract_address = deploy_contract("HelloStarknet");
+        let dispatcher = IHelloStarknetDispatcher { contract_address };
+
+        // Test 1: Zero address (should fail validation)
+        let zero_address: felt252 = 0;
+        let is_valid = dispatcher.validate_wallet(zero_address);
+        assert(!is_valid, 'Expected zero address to be invalid');
+
+        // Test 2: Valid address
+        let valid_address: felt252 = 0x02e554f88fc04ddbc2809d15f6dcdc1e8f339d4be8459a2c026713de3d0f22cd;
+        let is_valid = dispatcher.validate_wallet(valid_address);
+        assert(is_valid, 'Expected non-zero address to be valid');
+    }
+}
