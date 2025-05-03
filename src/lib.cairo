@@ -1,3 +1,5 @@
+use starknet::ContractAddress;
+pub mod verify_sig;
 #[starknet::interface]
 pub trait IHelloStarknet<TContractState> {
     fn increase_balance(ref self: TContractState, amount: felt252);
@@ -7,13 +9,16 @@ pub trait IHelloStarknet<TContractState> {
 
 #[starknet::contract]
 mod HelloStarknet {
+    use super::IHelloStarknet;
+    use starknet::ContractAddress;
+    use core::num::traits::Zero;
     #[storage]
     struct Storage {
-        balance: felt252, 
+        balance: felt252,
     }
 
     #[abi(embed_v0)]
-    impl HelloStarknetImpl of super::IHelloStarknet<ContractState> {
+    impl HelloStarknetImpl of IHelloStarknet<ContractState> {
         fn increase_balance(ref self: ContractState, amount: felt252) {
             assert(amount != 0, 'Amount cannot be 0');
             self.balance.write(self.balance.read() + amount);
@@ -29,6 +34,5 @@ mod HelloStarknet {
             }
             true
         }
-
     }
 }

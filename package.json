@@ -1,0 +1,27 @@
+{
+  "name": "defifundr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "ts-node scripts/deploy.ts",
+    "install": "cd scripts && bash install_tools.sh $(test -n \"$npm_config_scarb_version\" && echo --scarb $npm_config_scarb_version) $(test -n \"$npm_config_starknet_foundry_version\" && echo --starknet-foundry $npm_config_starknet_foundry_version) $(test -n \"$npm_config_foundry_version\" && echo --foundry $npm_config_foundry_version) $(test -n \"$npm_config_dojo_version\" && echo --dojo $npm_config_dojo_version)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "starknet": "^6.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.6.3"
+  }
+}
