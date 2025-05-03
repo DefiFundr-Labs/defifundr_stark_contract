@@ -3,3 +3,4 @@ target
 /node_modules
 snfoundry.toml
 .DS_Store
+.env

@@ -15,7 +15,7 @@ async function main() {
   const account0 = new Account(provider, accountAddress0, privateKey0);
   console.log("Account connected.\n");
 
-  let { sierraCode, casmCode } = await getCompiledCode("defifundr_contract");
+  let { sierraCode, casmCode } = await getCompiledCode("defifundr_contract_HelloStarknet");
 
   const deployResponse = await account0.declareAndDeploy({
     contract: sierraCode,

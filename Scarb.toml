@@ -14,6 +14,7 @@ assert_macros = "2.8.4"
 starkbid_contract = { git = "https://github.com/StarkBid/starkbid_contract" }
 
 [[target.starknet-contract]]
+casm = true
 sierra = true
 
 [scripts]
