@@ -22,12 +22,13 @@ defifundr_evm_contract/
 
 ---
 
+<!-- working starknet -->
+
 ## Getting Started
 
 ### Prerequisites
 
-- npm or yarn
-- Hardhat CLI
+- yarn
 
 ### Installation
 
@@ -54,6 +55,8 @@ scarb test
 ```bash
 yarn deploy
 ```
+
+<!-- end of working starknet -->
 
 ---
 

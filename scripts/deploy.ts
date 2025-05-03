@@ -9,9 +9,9 @@ async function main() {
   });
 
   // initialize existing predeployed account 0
-  console.log("ACCOUNT_ADDRESS=", process.env.DEPLOYER_ADDRESS);
-  const privateKey0 = process.env.DEPLOYER_PRIVATE_KEY ?? "";
-  const accountAddress0: string = process.env.DEPLOYER_ADDRESS ?? "";
+  console.log("ACCOUNT_ADDRESS=", process.env.STARKNET_ADDRESS);
+  const privateKey0 = process.env.STARKNET_PRIVATE_KEY ?? "";
+  const accountAddress0: string = process.env.STARKNET_ADDRESS ?? "";
   const account0 = new Account(provider, accountAddress0, privateKey0);
   console.log("Account connected.\n");
 
