@@ -1,2 +1,6 @@
 target
 .snfoundry_cache/
+/node_modules
+snfoundry.toml
+.DS_Store
+.env

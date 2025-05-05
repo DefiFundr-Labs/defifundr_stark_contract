@@ -22,40 +22,41 @@ defifundr_evm_contract/
 
 ---
 
+<!-- working starknet -->
+
 ## Getting Started
 
 ### Prerequisites
 
-- npm or yarn
-- Hardhat CLI
+- yarn
 
 ### Installation
 
 ```bash
-git clone https://github.com/DefiFundr-Labs/defifundr_evm_contract.git
-cd defifundr_evm_contract
-npm install
+git clone  https://github.com/DefiFundr-Labs/defifundr_stark_contract
+cd defifundr_stark_contract
+yarn
 ```
 
 ### Compile Contracts
 
 ```bash
-npx hardhat compile
+scarb build
 ```
 
 ### Run Tests
 
 ```bash
-npx hardhat test
-# With gas report
-REPORT_GAS=true npx hardhat test
+scarb test
 ```
 
 ### Local Deployment
 
 ```bash
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
+yarn deploy
 ```
+
+<!-- end of working starknet -->
 
 ---
 

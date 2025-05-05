@@ -42,15 +42,15 @@ fn test_cannot_increase_balance_with_zero_value() {
         Result::Ok(_) => core::panic_with_felt252('Should have panicked'),
         Result::Err(panic_data) => {
             assert(*panic_data.at(0) == 'Amount cannot be 0', *panic_data.at(0));
-        }
+        },
     };
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use starknet::testing::{deploy_contract, ContractAddress};
-    use starknet::contract_address_const;
+    use starknet::ContractAddress;
+    use core::num::traits::Zero;
 
     #[test]
     fn test_validate_wallet() {
@@ -59,13 +59,13 @@ mod tests {
         let dispatcher = IHelloStarknetDispatcher { contract_address };
 
         // Test 1: Zero address (should fail validation)
-        let zero_address: felt252 = 0;
+        let zero_address = Zero::zero();
         let is_valid = dispatcher.validate_wallet(zero_address);
-        assert(!is_valid, 'Expected zero address to be invalid');
+        assert(!is_valid, 'Zero address invalid');
 
         // Test 2: Valid address
-        let valid_address: felt252 = 0x02e554f88fc04ddbc2809d15f6dcdc1e8f339d4be8459a2c026713de3d0f22cd;
+        let valid_address: ContractAddress = starknet::contract_address_const::<'USER'>();
         let is_valid = dispatcher.validate_wallet(valid_address);
-        assert(is_valid, 'Expected non-zero address to be valid');
+        assert(is_valid, 'Valid address should pass');
     }
 }
